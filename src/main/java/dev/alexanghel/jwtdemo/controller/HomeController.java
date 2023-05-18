@@ -17,14 +17,14 @@ public class HomeController {
 //        return "hello. " + principal.getName();
 //    }
 
-    @PreAuthorize("hasAuthority('SCOPE_read')")
+    @PreAuthorize("hasAnyAuthority('SCOPE_user', 'SCOPE_admin')")
     @GetMapping("/user")
     public String user(Principal principal) {
         System.out.println("principal = " + principal);
         return "hello. user " + principal.getName();
     }
 
-    @PreAuthorize("hasAuthority('SCOPE_write')")
+    @PreAuthorize("hasAuthority('SCOPE_admin')")
     @GetMapping("/admin")
     public String write(Principal principal) {
         System.out.println("principal = " + principal);
